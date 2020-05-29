@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>table</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+</head>
+<body>
+<div class="container-fluid">
+<table class="table table-light" style="background-color:#e3f2fd;">
+  <tbody  id="datas">
+  	{% for data in all %}
+    <tr>
+		<td>{{ data.temp }}</td>
+      	<td>{{ data.pressure }}</td>
+      	<td>{{ data.humidity }}</td>
+		<td>{{ data.dateandtime }}</td>
+    </tr>
+  	{% endfor %}
+  </tbody>
+</table>
+</div>
+</body>
+</html>

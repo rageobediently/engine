@@ -1,0 +1,33 @@
+{% extends "home/homepage.html" %}
+{% block head %}
+	<meta charset="utf-8">
+	<title>django-google-charts</title>
+	<link rel="stylesheet media="all">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        setTimeout(F1, 2000);
+            function F1(){
+                $.get('/display/table', function(data){
+                    $('tbody').html(data);
+                });
+                setTimeout(F1, 2000);
+            }
+        </script>
+{% endblock %}
+{% block charts %}
+<div class="container-fluid">
+<table class="table table-sm table-light">
+  <thead>
+    <tr>
+      <th scope="col">Температура</th>
+      <th scope="col">Давление</th>
+      <th scope="col">Влажность</th>
+      <th scope="col">Время измерения</th>
+    </tr>
+  </thead>
+  <tbody  id="datas">
+
+  </tbody>
+</table>
+</div>
+{% endblock %}
