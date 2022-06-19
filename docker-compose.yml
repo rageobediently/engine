@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  web:
+    # Запуск образа для локальной разработки
+    build: ./app
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./app/:/usr/src/app/
+    ports:
+      - 8000:8000
+    # Переменные, которые в основном будут использоваться в settings.py
+    env_file:
+      - ./.env.dev
+  db:
+    # Образ и версия базы, которую мы будем использовать
+    image: postgres:11.4-alpine
+    # Внешний том(volume) и место где он будет подключен внутри контейнера
+    volumes:
+      - postgres_volume:/var/lib/postgresql/data/
+    environment:
+      # Учетные данные, которые можно будет переопределить
+      - POSTGRES_USER=zavoddashboard
+      - POSTGRES_PASSWORD=zavoddashboard
+      - POSTGRES_DB=zavoddashboard_db
+
+volumes:
+  postgres_volume:
